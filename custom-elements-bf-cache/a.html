@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>a</title>
+  <script>
+    var proto = Object.create(HTMLElement.prototype);
+
+    proto.createdCallback = function() {
+      this.textContent = 'Hello World';
+    };
+
+    document.registerElement('x-foo', { prototype: proto });
+  </script>
+</head>
+<body>
+  <x-foo></x-foo>
+  <a href="b.html">Forward</a>
+  <button onclick="document.body.appendChild(document.createElement('x-foo'))">New x-foo</button>
+</body>
+</html>
